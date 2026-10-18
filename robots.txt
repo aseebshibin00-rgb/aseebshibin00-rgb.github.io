@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aseebshibin00-rgb.github.io/sitemap.xml

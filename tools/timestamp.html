@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Free Unix timestamp converter for converting dates and Unix timestamps."><title>Unix Timestamp Converter — DevTools Lite</title><link rel="stylesheet" href="../style.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3141617309088348" crossorigin="anonymous"></script></head>
+<body><header class="site-header"><div class="wrap nav"><a class="brand" href="../index.html">DevTools Lite</a><nav><a href="../index.html">Home</a><a href="json-formatter.html">JSON</a><a href="base64.html">Base64</a><a href="timestamp.html">Timestamp</a></nav></div></header>
+<main class="wrap"><section class="hero"><p class="eyebrow">Time utility</p><h1>Unix Timestamp Converter</h1><p>Convert between Unix timestamps and readable dates without sending your data to a server.</p></section>
+<label for="timestamp">Unix timestamp (seconds)</label><input id="timestamp" type="number" placeholder="e.g. 1792272000"><div class="actions"><button id="toDate">Timestamp → Date</button></div><p id="dateResult" role="status"></p>
+<hr>
+<label for="date">Date and time</label><input id="date" type="datetime-local"><div class="actions"><button id="toTimestamp">Date → Timestamp</button><button id="now" class="secondary">Use current time</button></div><p id="timestampResult" role="status"></p>
+<section class="content"><h2>What is a Unix timestamp?</h2><p>A Unix timestamp represents a point in time as the number of seconds since 1970-01-01 00:00:00 UTC. It is widely used in software systems and APIs.</p><h2>How to use the converter</h2><p>Enter a timestamp to convert it to a date, or select a date and convert it to seconds.</p></section></main><footer><div class="wrap"><a href="../about.html">About</a><a href="../privacy.html">Privacy Policy</a><a href="../contact.html">Contact</a><span>© 2026 DevTools Lite</span></div></footer>
+<script>
+const t=document.getElementById('timestamp'),d=document.getElementById('date'),dr=document.getElementById('dateResult'),tr=document.getElementById('timestampResult');
+document.getElementById('toDate').onclick=()=>{const n=Number(t.value);if(!Number.isFinite(n)){dr.textContent='Enter a valid timestamp.';return}const x=new Date(n*1000);dr.textContent=Number.isNaN(x.getTime())?'Invalid timestamp.':x.toISOString()};
+document.getElementById('toTimestamp').onclick=()=>{if(!d.value){tr.textContent='Select a date and time.';return}tr.textContent=String(Math.floor(new Date(d.value).getTime()/1000))};
+document.getElementById('now').onclick=()=>{const now=new Date();d.value=new Date(now-now.getTimezoneOffset()*60000).toISOString().slice(0,16)};
+</script></body></html>
